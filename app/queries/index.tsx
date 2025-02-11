@@ -1,36 +1,81 @@
-import { useQuery } from '@tanstack/react-query';
-import { QueryError, VideosResponse } from './types';
-import { mockChartData, ChartData } from '@/components/ChartsData';
+import { useQuery } from "@tanstack/react-query";
+import { QueryError, VideosResponse } from "./types";
+import { mockChartData } from '@/components/ChartsData';
+
+interface ViolationData {
+	month: string;
+	violations: number;
+	equipmentsRemoved: number;
+	severity: {
+	  light: number;
+	  severe: number;
+	  critical: number;
+	};
+  }
+  
+  interface ItemData {
+	month: string;
+	helmet: number;
+	vest: number;
+	gloves: number;
+  }
+  
+  interface ChartData {
+	violations: ViolationData[];
+	items: ItemData[];
+  }
 
 const defaultChartData: ChartData = {
-	violations: [
-	  { timestamp: '00:00', count: 0 },
-	],
-	items: [
-	  { timestamp: '00:00', Capacete: 0, Colete: 0, Luvas: 0 },
-	],
-  };
-
+  violations: [
+    { 
+      month: '00:00',
+      violations: 0,
+      equipmentsRemoved: 0,
+      severity: {
+        light: 0,
+        severe: 0,
+        critical: 0
+      }
+    }
+  ],
+  items: [
+    { 
+      month: '00:00', 
+      helmet: 0, 
+      vest: 0, 
+      gloves: 0 
+    }
+  ]
+};
 const fetchVideos = async () => {
-  const response = await fetch('/api/videos');
+  const response = await fetch("/api/videos");
   return response.json();
 };
 
 export const useVideos = () => {
   return useQuery<VideosResponse, QueryError>({
-    queryKey: ['videos'],
+    queryKey: ["videos"],
     queryFn: fetchVideos,
   });
 };
 
 const fetchChartData = async (videoName: string): Promise<ChartData> => {
-	return mockChartData[videoName] || defaultChartData;
+  const data = mockChartData[videoName] || defaultChartData;
+  return {
+    violations: data.violations,
+    items: data.items.map(item => ({
+      month: item.month,
+      helmet: item.helmet || 0,
+      vest: item.vest || 0,
+      gloves: item.gloves || 0
+    }))
   };
-  
-  export const useChartData = (videoName: string) => {
-	return useQuery({
-	  queryKey: ['chartData', videoName],
-	  queryFn: () => fetchChartData(videoName),
-	  enabled: !!videoName,
-	});
-  };
+};
+
+export const useChartData = (videoName: string) => {
+  return useQuery({
+    queryKey: ["chartData", videoName],
+    queryFn: () => fetchChartData(videoName),
+    enabled: !!videoName,
+  });
+};

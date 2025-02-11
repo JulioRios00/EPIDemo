@@ -11,37 +11,84 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+interface ViolationData {
+  month: string;
+  violations: number;
+  equipmentsRemoved: number;
+  severity: {
+    light: number;
+    severe: number;
+    critical: number;
+  };
+}
+
+interface ItemData {
+  month: string;
+  helmet: number;
+  vest: number;
+  gloves: number;
+}
+
 interface AreaChartProps {
   type: "violations" | "items";
-  data: any[];
+  data: ViolationData[] | ItemData[];
 }
 
 export default function CustomAreaChart({ data }: AreaChartProps) {
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <AreaChart
-        data={data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 25,
-        }}
-      >
-        <CartesianGrid stroke="#e5e5e5" strokeOpacity={0.1}/>
-        <XAxis dataKey="month" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Area
-          type="monotone"
-          dataKey="equipmentsRemoved"
-          name="Equipamentos removidos"
-          stroke="#82ca9d"
-          fill="#82ca9d"
-          fillOpacity={0.3}
-        />
-      </AreaChart>
-    </ResponsiveContainer>
+    <div className="w-full h-full min-h-[400px]">
+      <ResponsiveContainer>
+        <AreaChart
+          data={data}
+          margin={{
+			top: 5,
+			right: 30,
+			left: 0,
+			bottom: 25,
+		  }}
+        >
+          <defs>
+            <linearGradient id="colorHelmet" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#281fe0" stopOpacity={0.9}/>
+              <stop offset="95%" stopColor="#281fe0" stopOpacity={0}/>
+            </linearGradient>
+            <linearGradient id="colorVest" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+            </linearGradient>
+            <linearGradient id="colorGloves" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#ffc658" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#ffc658" stopOpacity={0}/>
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Area
+            type="monotone"
+            dataKey="helmet"
+            stroke="#8884d8"
+            fillOpacity={1}
+            fill="url(#colorHelmet)"
+          />
+          <Area
+            type="monotone"
+            dataKey="vest"
+            stroke="#82ca9d"
+            fillOpacity={1}
+            fill="url(#colorVest)"
+          />
+          <Area
+            type="monotone"
+            dataKey="gloves"
+            stroke="#ffc658"
+            fillOpacity={1}
+            fill="url(#colorGloves)"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
   );
 }

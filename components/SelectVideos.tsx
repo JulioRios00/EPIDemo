@@ -24,6 +24,7 @@ export function SelectVideo({ videoName, onVideoChange }: SelectVideoProps) {
     if (data?.videos && data.videos.length > 0 && !videoName) {
       onVideoChange(defaultVideo);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.videos]);
 
   return (

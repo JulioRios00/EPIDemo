@@ -10,6 +10,7 @@ export async function GET() {
     
     return NextResponse.json({ videos });
   } catch (error) {
+    console.error('Error reading videos directory:', error);
     return NextResponse.json({ videos: [] });
   }
 }

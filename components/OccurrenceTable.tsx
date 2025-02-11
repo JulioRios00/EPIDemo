@@ -9,7 +9,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { OccurrenceRecord } from "./OccurrenceData"
-import Link from "next/link"
 
 interface OccurrenceTableProps {
   data: OccurrenceRecord[]

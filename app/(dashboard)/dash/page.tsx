@@ -53,19 +53,19 @@ export default function DashboardPage() {
             <CardContent className="p-4 h-[400px]">
               {isLoading ? (
                 <div className="h-full flex items-center justify-center">
-                  Loading...
+                  Carregando...
                 </div>
               ) : (
                 <DashboardCharts
                   type="violations"
-                  data={chartData?.violations}
+                  data={chartData?.violations ?? []}
                 />
               )}
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Quantidade de EPI's removidos</CardTitle>
+              <CardTitle>Quantidade de EPIs removidos</CardTitle>
             </CardHeader>
             <CardContent className="p-4 h-[400px]">
               {isLoading ? (
@@ -73,7 +73,10 @@ export default function DashboardPage() {
                   Loading...
                 </div>
               ) : (
-                <CustomAreaChart type="items" data={chartData?.items} />
+                <CustomAreaChart 
+                  type="items"
+                  data={chartData?.items ?? []} 
+                />
               )}
             </CardContent>
           </Card>
