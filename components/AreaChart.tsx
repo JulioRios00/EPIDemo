@@ -69,6 +69,7 @@ export default function CustomAreaChart({ data }: AreaChartProps) {
           <Area
             type="monotone"
             dataKey="helmet"
+			name="Capacete"
             stroke="#8884d8"
             fillOpacity={1}
             fill="url(#colorHelmet)"
@@ -76,6 +77,7 @@ export default function CustomAreaChart({ data }: AreaChartProps) {
           <Area
             type="monotone"
             dataKey="vest"
+			name="Colete"
             stroke="#82ca9d"
             fillOpacity={1}
             fill="url(#colorVest)"
@@ -83,6 +85,7 @@ export default function CustomAreaChart({ data }: AreaChartProps) {
           <Area
             type="monotone"
             dataKey="gloves"
+			name="Luvas"
             stroke="#ffc658"
             fillOpacity={1}
             fill="url(#colorGloves)"
