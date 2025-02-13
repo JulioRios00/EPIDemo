@@ -8,7 +8,6 @@ import { useChartData } from "@/app/queries";
 import VideoPlayer from "@/components/VideoPlayer";
 import { OccurrenceTable } from "@/components/OccurrenceTable";
 import { occurrenceData } from "@/components/OccurrenceData";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function DashboardPage() {
   const [videoName, setVideoName] = useState<string>("");
@@ -20,7 +19,6 @@ export default function DashboardPage() {
 
   return (
     <div className="flex h-screen">
-      {/* Main Content */}
       <div className="flex-1 overflow-auto">
         <div className="container p-8 space-y-8">
           <div className="flex items-center justify-between mb-8">
@@ -31,9 +29,6 @@ export default function DashboardPage() {
                   videoName={videoName}
                   onVideoChange={handleVideoChange}
                 />
-              </div>
-              <div className="flex items-center ">
-                <ThemeToggle />
               </div>
             </div>
           </div>
