@@ -95,9 +95,9 @@ export function AlertsTable() {
           <TableHead>Tipo</TableHead>
           <TableHead>Câmera</TableHead>
           <TableHead>Estado</TableHead>
+		  <TableHead>EPI Removido</TableHead>
           <TableHead>Miniatura</TableHead>
           <TableHead>Ações</TableHead>
-          <TableHead>EPI Removido</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -107,7 +107,7 @@ export function AlertsTable() {
             <TableCell>{getAlertBadge(alert.type)}</TableCell>
             <TableCell>{alert.camera}</TableCell>
             <TableCell>{STATUS_TRANSLATIONS[alert.status]}</TableCell>
-            <TableCell>
+			<TableCell>
               <div className="flex gap-1">
                 {alert.equipmentRemoved.map((equipment, index) => (
                   <Badge key={index} variant="outline">
@@ -158,6 +158,7 @@ export function AlertsTable() {
                 </Button>
               </div>
             </TableCell>
+
           </TableRow>
         ))}
       </TableBody>
