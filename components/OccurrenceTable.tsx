@@ -16,7 +16,7 @@ interface OccurrenceTableProps {
 
 export function OccurrenceTable({ data }: OccurrenceTableProps) {
   return (
-    <Table>
+    <Table className="bg-background">
       <TableHeader>
         <TableRow>
           <TableHead>Data</TableHead>

@@ -52,8 +52,9 @@ export default function DashboardCharts({ data }: DashboardChartsProps) {
           top: 5,
           right: 30,
           left: 20,
-          bottom: 25,
+          bottom: 15,
         }}
+		className="bg-background"
       >
         <CartesianGrid
           stroke="#e5e5e5"

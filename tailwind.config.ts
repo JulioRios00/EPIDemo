@@ -10,7 +10,10 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			background: 'hsl(var(--background))',
+  			background: {
+          DEFAULT: 'hsl(var(--background))',
+          dark: '#1f2937',
+        },
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
@@ -44,11 +47,11 @@ export default {
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
   			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
+  				'1': '#4ade80', // green-400
+  				'2': '#2dd4bf', // teal-400
+  				'3': '#60a5fa', // blue-400
+  				'4': '#f472b6', // pink-400
+  				'5': '#c084fc'  // purple-400
   			}
   		},
   		borderRadius: {
