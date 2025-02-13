@@ -28,19 +28,20 @@ interface Alert {
   status: "pending" | "confirmed" | "false_positive";
   thumbnail: string;
   comments: string;
+  equipmentRemoved: string[];
 }
 
 const STATUS_TRANSLATIONS = {
-	pending: "Pendente",
-	confirmed: "Confirmado",
-	false_positive: "Falso positivo",
-}
+  pending: "Pendente",
+  confirmed: "Confirmado",
+  false_positive: "Falso positivo",
+};
 
 const ALERT_TRANSLATIONS = {
-	no_ppe: "SEM EPI",
-	low_confidence: "BAIXA CONFIANÇA",
-	unauthorized: "NÃO AUTORIZADO"
-  } as const;
+  no_ppe: "SEM EPI",
+  low_confidence: "BAIXA CONFIANÇA",
+  unauthorized: "NÃO AUTORIZADO",
+} as const;
 
 export function AlertsTable() {
   const [alerts] = useState<Alert[]>([
@@ -52,6 +53,7 @@ export function AlertsTable() {
       status: "pending",
       thumbnail: "/images/ex-2.jpg",
       comments: "",
+      equipmentRemoved: ["Capacete", "Luvas"],
     },
     {
       id: "2",
@@ -61,6 +63,7 @@ export function AlertsTable() {
       status: "pending",
       thumbnail: "/images/ex-1.jpg",
       comments: "",
+      equipmentRemoved: ["Colete"],
     },
     {
       id: "3",
@@ -70,6 +73,7 @@ export function AlertsTable() {
       status: "pending",
       thumbnail: "/images/ex-3.jpg",
       comments: "",
+      equipmentRemoved: ["Capacete", "Colete", "Luvas"],
     },
   ]);
 
@@ -79,7 +83,7 @@ export function AlertsTable() {
       low_confidence: "bg-yellow-500",
       unauthorized: "bg-orange-500",
     };
-    
+
     return <Badge className={styles[type]}>{ALERT_TRANSLATIONS[type]}</Badge>;
   };
 
@@ -93,6 +97,7 @@ export function AlertsTable() {
           <TableHead>Estado</TableHead>
           <TableHead>Miniatura</TableHead>
           <TableHead>Ações</TableHead>
+          <TableHead>EPI Removido</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -103,11 +108,20 @@ export function AlertsTable() {
             <TableCell>{alert.camera}</TableCell>
             <TableCell>{STATUS_TRANSLATIONS[alert.status]}</TableCell>
             <TableCell>
+              <div className="flex gap-1">
+                {alert.equipmentRemoved.map((equipment, index) => (
+                  <Badge key={index} variant="outline">
+                    {equipment}
+                  </Badge>
+                ))}
+              </div>
+            </TableCell>
+            <TableCell>
               <Drawer>
                 <DrawerTrigger asChild>
                   <div className="relative w-16 h-16">
-                    <Image 
-                      src={alert.thumbnail} 
+                    <Image
+                      src={alert.thumbnail}
                       alt="Alert thumbnail"
                       fill
                       className="object-cover rounded cursor-pointer hover:opacity-80 transition-opacity"
@@ -120,8 +134,8 @@ export function AlertsTable() {
                   </DrawerHeader>
                   <div className="p-6">
                     <div className="relative w-full max-w-3xl h-[500px] mx-auto">
-                      <Image 
-                        src={alert.thumbnail} 
+                      <Image
+                        src={alert.thumbnail}
                         alt="Alert full view"
                         fill
                         className="rounded-lg object-contain"
@@ -133,9 +147,15 @@ export function AlertsTable() {
             </TableCell>
             <TableCell>
               <div className="flex gap-2">
-                <Button size="sm" variant="outline">Confirmar</Button>
-                <Button size="sm" variant="outline">Auditoria</Button>
-                <Button size="sm" variant="outline">Adicionar comentário</Button>
+                <Button size="sm" variant="outline">
+                  Confirmar
+                </Button>
+                <Button size="sm" variant="outline">
+                  Auditoria
+                </Button>
+                <Button size="sm" variant="outline">
+                  Adicionar comentário
+                </Button>
               </div>
             </TableCell>
           </TableRow>

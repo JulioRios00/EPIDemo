@@ -1,4 +1,4 @@
-interface ViolationData {
+export interface ViolationData {
   month: string;
   violations: number;
   equipmentsRemoved: number;
@@ -9,11 +9,12 @@ interface ViolationData {
   };
 }
 
-interface ItemData {
+export interface ItemData {
   month: string;
   helmet: number;
   vest: number;
   gloves: number;
+  boots: number;
 }
 
 export interface ChartData {
@@ -66,37 +67,43 @@ export const mockChartData: Record<string, ChartData> = {
         month: "Jan",
         helmet: 5,
         vest: 6,
-        gloves: 4
+        gloves: 4,
+		boots: 3
       },
       { 
         month: "Feb",
         helmet: 8,
         vest: 7,
-        gloves: 7
+        gloves: 7,
+		boots: 3
       },
       { 
         month: "Mar",
         helmet: 2,
         vest: 3,
-        gloves: 3
+        gloves: 3,
+		boots: 3
       },
       { 
         month: "Apr",
         helmet: 4,
         vest: 5,
-        gloves: 3
+        gloves: 3,
+		boots: 3
       },
       { 
         month: "May",
         helmet: 1,
         vest: 2,
-        gloves: 1
+        gloves: 1,
+		boots: 1
       },
       { 
         month: "Jun",
         helmet: 2,
         vest: 3,
-        gloves: 2
+        gloves: 2,
+		boots: 2
       }
     ]
   },
@@ -144,37 +151,43 @@ export const mockChartData: Record<string, ChartData> = {
         month: "Jan",
         helmet: 3,
         vest: 4,
-        gloves: 3
+        gloves: 3,
+		boots: 2
       },
       { 
         month: "Feb",
         helmet: 6,
         vest: 5,
-        gloves: 7
+        gloves: 7,
+		boots: 2
       },
       { 
         month: "Mar",
         helmet: 2,
         vest: 4,
-        gloves: 3
+        gloves: 3,
+		boots: 2
       },
       { 
         month: "Apr",
         helmet: 5,
         vest: 3,
-        gloves: 3
+        gloves: 3,
+		boots: 2
       },
       { 
         month: "May",
         helmet: 3,
         vest: 5,
-        gloves: 3
+        gloves: 3,
+		boots: 2
       },
       { 
         month: "Jun",
         helmet: 4,
         vest: 6,
-        gloves: 3
+        gloves: 4,
+		boots: 2
       }
     ]
   },
@@ -222,37 +235,43 @@ export const mockChartData: Record<string, ChartData> = {
         month: "Jan",
         helmet: 6,
         vest: 7,
-        gloves: 4
+        gloves: 4,
+		boots: 2
       },
       { 
         month: "Feb",
         helmet: 9,
         vest: 8,
-        gloves: 8
+        gloves: 8, 
+		boots: 2
       },
       { 
         month: "Mar",
         helmet: 3,
         vest: 5,
-        gloves: 3
+        gloves: 3, 
+		boots: 2
       },
       { 
         month: "Apr",
         helmet: 7,
         vest: 5,
-        gloves: 3
+        gloves: 3,
+		boots: 2
       },
       { 
         month: "May",
         helmet: 2,
         vest: 4,
-        gloves: 2
+        gloves: 2,
+		boots: 2
       },
       { 
         month: "Jun",
         helmet: 5,
         vest: 4,
-        gloves: 4
+        gloves: 4,
+		boots: 2
       }
     ]
   },
@@ -300,37 +319,43 @@ export const mockChartData: Record<string, ChartData> = {
         month: "Jan",
         helmet: 2,
         vest: 4,
-        gloves: 3
+        gloves: 3,
+		boots: 2
       },
       { 
         month: "Feb",
         helmet: 5,
         vest: 5,
-        gloves: 4
+        gloves: 4,
+		boots: 2
       },
       { 
         month: "Mar",
         helmet: 1,
         vest: 3,
-        gloves: 3
+        gloves: 3,
+		boots: 2
       },
       { 
         month: "Apr",
         helmet: 4,
         vest: 4,
-        gloves: 3
+        gloves: 3,
+		boots: 2
       },
       { 
         month: "May",
         helmet: 2,
         vest: 2,
-        gloves: 2
+        gloves: 2,
+		boots: 2
       },
       { 
         month: "Jun",
         helmet: 3,
         vest: 4,
-        gloves: 3
+        gloves: 3,
+		boots: 2
       }
     ]
   }

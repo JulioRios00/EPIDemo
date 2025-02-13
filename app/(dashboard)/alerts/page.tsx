@@ -23,12 +23,12 @@ export default function AlertsPage() {
     <div className="container mx-auto p-8 space-y-8 bg-background">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold">Alertas & Logs</h1>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 pr-5">
           <Button
             variant={isSilenced ? "destructive" : "outline"}
             onClick={() => setIsSilenced(!isSilenced)}
           >
-            {isSilenced ? "Unmute Alerts" : "Silence Alerts"}
+            {isSilenced ? "Ativar Alertas" : "Silenciar Alertas"}
           </Button>
           <ExportButton />
         </div>

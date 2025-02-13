@@ -9,7 +9,7 @@ export default function DashboardLayout({
   return (
     <div className="flex h-screen relative">
       <Navigation />
-      <div className="absolute top-9 right-10 ">
+      <div className="absolute top-8 right-8 ">
         <ThemeToggle />
       </div>
 

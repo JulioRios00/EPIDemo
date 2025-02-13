@@ -6,8 +6,6 @@ import CustomAreaChart from "@/components/AreaChart";
 import { SelectVideo } from "@/components/SelectVideos";
 import { useChartData } from "@/app/queries";
 import VideoPlayer from "@/components/VideoPlayer";
-import { OccurrenceTable } from "@/components/OccurrenceTable";
-import { occurrenceData } from "@/components/OccurrenceData";
 
 export default function DashboardPage() {
   const [videoName, setVideoName] = useState<string>("");
@@ -20,11 +18,11 @@ export default function DashboardPage() {
   return (
     <div className="flex h-screen">
       <div className="flex-1 overflow-auto">
-        <div className="container p-8 space-y-8">
+        <div className="container p-7 space-y-8">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-3xl font-bold">Dashboard de monitoramento de EPI</h1>
             <div className="flex items-center gap-6">
-              <div className="flex items-center translate-y-1 ">
+              <div className="flex items-center translate-y-1 pr-10">
                 <SelectVideo
                   videoName={videoName}
                   onVideoChange={handleVideoChange}
@@ -34,14 +32,14 @@ export default function DashboardPage() {
           </div>
 
           <div className="grid gap-8 ">
-            <Card className="bg-background">
+            {/* <Card className="bg-background">
               <CardHeader>
                 <CardTitle>Registros de violação de EPI</CardTitle>
               </CardHeader>
               <CardContent className="p-4">
                 <OccurrenceTable data={occurrenceData} />
               </CardContent>
-            </Card>
+            </Card> */}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-3">
               <Card className="bg-background">

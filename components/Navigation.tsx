@@ -15,8 +15,8 @@ export function Navigation() {
     { href: "/camera-page", label: "Câmeras" },
 	{ href: "/alerts", label: "Alertas & Logs" },
 	//soltar 404
-	{ href: "/#fdf", label: "Usuários e permissões" },
-	{ href: "/#dfd", label: "Manutenção e suporte" },
+	{ href: "/users", label: "Usuários e permissões" },
+	{ href: "/maintenance", label: "Manutenção e suporte" },
 ];
 
   return (

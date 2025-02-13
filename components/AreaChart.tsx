@@ -41,28 +41,32 @@ export default function CustomAreaChart({ data }: AreaChartProps) {
         <AreaChart
           data={data}
           margin={{
-			top: 5,
-			right: 30,
-			left: 0,
-			bottom: 15,
-		  }}
-		  className="bg-background"
+            top: 5,
+            right: 30,
+            left: 0,
+            bottom: 15,
+          }}
+          className="bg-background"
         >
           <defs>
             <linearGradient id="colorHelmet" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#281fe0" stopOpacity={0.9}/>
-              <stop offset="95%" stopColor="#281fe0" stopOpacity={0}/>
+              <stop offset="5%" stopColor="#281fe0" stopOpacity={0.9} />
+              <stop offset="95%" stopColor="#281fe0" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="colorVest" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-              <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+              <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="colorGloves" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#ffc658" stopOpacity={0.8}/>
-              <stop offset="95%" stopColor="#ffc658" stopOpacity={0}/>
+              <stop offset="5%" stopColor="#ffc658" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#ffc658" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            stroke="#e5e5e5"
+            strokeOpacity={0.1}
+          />
           <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />
@@ -70,7 +74,7 @@ export default function CustomAreaChart({ data }: AreaChartProps) {
           <Area
             type="monotone"
             dataKey="helmet"
-			name="Capacete"
+            name="Capacete"
             stroke="#8884d8"
             fillOpacity={1}
             fill="url(#colorHelmet)"
@@ -78,7 +82,7 @@ export default function CustomAreaChart({ data }: AreaChartProps) {
           <Area
             type="monotone"
             dataKey="vest"
-			name="Colete"
+            name="Colete"
             stroke="#82ca9d"
             fillOpacity={1}
             fill="url(#colorVest)"
@@ -86,7 +90,7 @@ export default function CustomAreaChart({ data }: AreaChartProps) {
           <Area
             type="monotone"
             dataKey="gloves"
-			name="Luvas"
+            name="Luvas"
             stroke="#ffc658"
             fillOpacity={1}
             fill="url(#colorGloves)"
