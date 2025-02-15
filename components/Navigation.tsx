@@ -3,26 +3,41 @@
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
+
 export function Navigation() {
   const pathname = usePathname();
   const [isCollapsed, setIsCollapsed] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 750) {
+        setIsCollapsed(true);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const routes = [
     { href: "/dash", label: "Painel de operação" },
     { href: "/camera-page", label: "Câmeras" },
-	{ href: "/alerts", label: "Alertas & Logs" },
-	//soltar 404
-	{ href: "/users", label: "Usuários e permissões" },
-	{ href: "/maintenance", label: "Manutenção e suporte" },
-];
+    { href: "/alerts", label: "Alertas & Logs" },
+    { href: "/users", label: "Usuários e permissões" },
+    { href: "/maintenance", label: "Manutenção e suporte" },
+  ];
 
   return (
     <div className="flex bg-background">
       <nav className={cn(
-        "transition-all bg-background p-4 border-r border-border",
+        "transition-all bg-background p-4 border-r border-border md:block",
         isCollapsed ? "w-0 opacity-0 overflow-hidden" : "w-64 opacity-100"
       )}>
         <div className="space-y-4 bg-background">

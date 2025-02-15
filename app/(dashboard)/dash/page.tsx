@@ -19,7 +19,7 @@ export default function DashboardPage() {
     <div className="flex h-screen">
       <div className="flex-1 overflow-auto">
         <div className="container p-7 space-y-8">
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
             <h1 className="text-3xl font-bold">Dashboard de monitoramento de EPI</h1>
             <div className="flex items-center gap-6">
               <div className="flex items-center translate-y-1 pr-10">
@@ -31,17 +31,8 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className="grid gap-8 ">
-            {/* <Card className="bg-background">
-              <CardHeader>
-                <CardTitle>Registros de violação de EPI</CardTitle>
-              </CardHeader>
-              <CardContent className="p-4">
-                <OccurrenceTable data={occurrenceData} />
-              </CardContent>
-            </Card> */}
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-3">
+          <div className="grid gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pb-3">
               <Card className="bg-background">
                 <CardHeader>
                   <CardTitle>Gravidade da infração</CardTitle>
@@ -90,4 +81,4 @@ export default function DashboardPage() {
       </div>
     </div>
   );
-}
+}           
